@@ -18,16 +18,29 @@ public class Seletest {
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
-
+  /**
+   * chrome driverの読み込み
+   * @see <a href="URL">https://www.google.co.jp/</a>
+   * @throws Exception [description]
+   */
   @Before
   public void setUp() throws Exception {
-	System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+	System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+  System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
 	 // chromeDriverのパス
 	driver = new ChromeDriver();
     baseUrl = "https://www.google.co.jp/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
+
+  /**
+   * お勉強用のテストケース
+   * @author yusuke matsugaya
+   * @version 1.0.0
+   *
+   * @throws Exception chrome 読み込みケースの失敗
+   */
   @Test
   public void test() throws Exception {
     driver.get(baseUrl);
