@@ -1,5 +1,7 @@
 libs/*
-tools/*
+tools/gradle-2.14
+tools/Home
+tools/.DS_Store
 .DS_Store
-driver/*
+driver/chromedriver
 /build
