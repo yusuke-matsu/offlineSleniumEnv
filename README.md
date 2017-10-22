@@ -16,20 +16,20 @@
 3. ダウンロードしたjdkとgradleをtoolsの中に突っ込む
 4. gradle.propertiesにjdkのパスを記載する
 5. driverの中に自分が動かしたいブラウザのseleniumドライバーを入れる
-6. 環境変数にgradleのパスを通す。
+6. 環境変数にgradleのパスを通す。  
    参考：https://qiita.com/quwahara/items/9c4e5fbda421cfcb09ad
 7. JAVAHOMEが環境変数に設定されていない場合はする（gradleを起動するために必要）。
 8. テストしたいコードをsrc -> test -> javaの配下に入れる
 9. テストが完成したら以下コマンドにて実行 "gradle -g libs clean build"
+   9については一度libsに必要な依存性を全て持ってくるただし、offline環境の場合
+   再度dependencyを取りにいきエラーになる可能性があるので、build.gradleで必要な
+   依存性はlibsから持ってくるように向き先を変えることが必要。
+10. オフラインにて利用する際にはbuild.gradleをコメントにしたがって修正。
 
-9については一度libsに必要な依存性を全て持ってくるただし、offline環境の場合
-再度dependencyを取りにいきエラーになる可能性があるので、build.gradleで必要な
-依存性はlibsから持ってくるように向き先を変えることが必要。
-
-次のテストからは”gradle test”にて実行できるはず。。。
+2回目以降のテストからは”gradle test”にて実行できるはず。。。
 
 ### need to check
-1. gradle testの中でテストが途中でハングすると最後まで行かずレポートを吐いてくれない
+1. 時々、gradle testの中でテストが途中でハングすると最後まで行かずレポートを吐いてくれない
 2. gitにて管理する際には、gitignoreでlibsとtoolsを読み込まないことにしているがgitのリポジトリ先にて
    jenkinsを利用して起動させる際にはこの点について考慮が必要。サーバーサイドにgradleとjdkを入れないといけない
    gitignoreしないと、ファイルが複製される為、物理的な容量を圧迫してしまう。

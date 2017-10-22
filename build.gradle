@@ -7,8 +7,7 @@
  * user guide available at https://docs.gradle.org/2.14.1/userguide/tutorial_java_projects.html
  */
 
-//再実行する為にuptodateを防ぐ
-outputs.upToDateWhen { false }
+
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -20,22 +19,26 @@ repositories {
     jcenter()
 }
 
+//再実行する為にuptodateを防ぐ
+test.outputs.upToDateWhen {false}
 
 // javadoc {
 //    options.encoding = "UTF-8"
 // }
 
 //テスト用のjavadocを作成する為のtask
-task testJavadoc(type: Javadoc) {
-    group = 'Tests'
-    description = 'Generates test case documents.'
-    source = sourceSets.test.allJava
-}
-
+/*
+* task testJavadoc(type: Javadoc) {
+*
+*    group = 'Tests'
+*    description = 'Generates test case documents.'
+*    source = sourceSets.test.allJava
+* }
+*/
 // In this section you declare the dependencies for your production and test code
 dependencies {
     //offlineで利用するためには以下三つの依存性の記載を排除する
-    //一度目にlibsに依存性を突っ込んでorg.slf4j:slf4j-api:1.7.21、
+    //一度目にlibsに依存性を突っ込んだあとはorg.slf4j:slf4j-api:1.7.21、
     //org.seleniumhq.selenium:selenium-java:2.53.0、junit:junit:4.12の3行はコメントアウトする。
 
     // The production code uses the SLF4J logging API at compile time
