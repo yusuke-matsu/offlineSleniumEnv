@@ -7,7 +7,8 @@
  * user guide available at https://docs.gradle.org/2.14.1/userguide/tutorial_java_projects.html
  */
 
-
+//再実行する為にuptodateを防ぐ
+outputs.upToDateWhen { false }
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -33,6 +34,10 @@ task testJavadoc(type: Javadoc) {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
+    //offlineで利用するためには以下三つの依存性の記載を排除する
+    //一度目にlibsに依存性を突っ込んでorg.slf4j:slf4j-api:1.7.21、
+    //org.seleniumhq.selenium:selenium-java:2.53.0、junit:junit:4.12の3行はコメントアウトする。
+
     // The production code uses the SLF4J logging API at compile time
     'org.slf4j:slf4j-api:1.7.21'
 
@@ -54,8 +59,10 @@ dependencies {
       3.caches取得後、パスを指定するコードに変更する
      */
 
-    //3
+    //3 一度libsに必要な依存関係を取得したら下二つのコードのコメントアウトを外す
     //compile fileTree(dir: './libs', include: '**/*.jar')
     //testCompile fileTree(dir: './libs', include: '**/*.jar')
+
+    //下はテスト必要
     //testJavadoc fileTree(dir: './libs', include: '**/*.jar')
 }
