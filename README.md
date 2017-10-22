@@ -20,7 +20,7 @@
    参考：https://qiita.com/quwahara/items/9c4e5fbda421cfcb09ad
 7. JAVAHOMEが環境変数に設定されていない場合はする（gradleを起動するために必要）。
 8. テストしたいコードをsrc -> test -> javaの配下に入れる
-9. テストが完成したら以下コマンドにて実行 "gradle -g libs clean build"
+9. テストが完成したら以下コマンドにて実行 "gradle -g libs clean build"  
    9については一度libsに必要な依存性を全て持ってくるただし、offline環境の場合
    再度dependencyを取りにいきエラーになる可能性があるので、build.gradleで必要な
    依存性はlibsから持ってくるように向き先を変えることが必要。
